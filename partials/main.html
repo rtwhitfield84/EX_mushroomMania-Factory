@@ -1,0 +1,28 @@
+<div class="container">
+   <nav class="navbar navbar-default">
+     <div class="container-fluid">
+       <div class="navbar-header">
+   <input ng-model="searchText" type="text" class="form-control" placeholder="Search" size="100">
+   </div>
+   </div>
+   </nav>
+  <h2>Mushroom Mania!</h2>
+  <p>Search our shrooms or filter by tasty and could be tasty but deadly. <label class="radio-inline"><input type="radio" name="
+  optradio" ng-model="edible" ng-value="false">Not-Tasty</label><label class="radio-inline"><input type="radio" name="optradio" ng-model="edible" ng-value="true">Tasty</label><label class="radio-inline"><input type="radio" name="optradio" ng-click="reload()">All</label></p>            
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Tasty</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="shroom in mushrooms | filter: {description: searchText, edible}">
+        <td>{{ shroom.name }}</td>
+        <td>{{ shroom.description }}</td>
+        <td>{{ shroom.edible ? "Yes" : "No" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
